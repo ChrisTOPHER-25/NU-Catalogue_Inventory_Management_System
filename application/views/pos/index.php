@@ -5,6 +5,10 @@
     <link rel="icon" href="assets/nuicon.png" type="image/x-icon">
 </head>
 
+<a class="navbar-brand" href="#">
+    <img src="assets/nulogo.png" class="navbar-logo">
+</a>
+
 <head>
     <title>POS - Sales And Inventory Management System</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap.css'); ?>">
@@ -37,9 +41,7 @@
 <body>
     <div style="background-color: #D0CFCF;padding: 0 20px;">
         <nav class="navbar" style="margin: 0;color: #EDEEC9 ">
-            <a class="navbar-brand" href="#">
-                <img src="assets/nulogo.png" class="navbar-logo">
-            </a>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo base_url('customers') ?>">Add Customer</a></li>
                 <?php if ($this->session->userdata('account_type') !== "Cashier" ): ?>
