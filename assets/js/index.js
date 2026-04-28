@@ -25,6 +25,9 @@ $(document).ready(function() {
 		$('#graph-menu button').removeClass('active');
 		$(this).addClass('active');
 		var type = $(this).data('id');
+		if (typeof myChart === 'undefined' || !myChart) {
+			return;
+		}
 		$.ajax({
 			type : 'POST',
 			url : base_url + 'sales/graph-filter',
@@ -43,7 +46,6 @@ $(document).ready(function() {
 					myChart.data.datasets[0].label = "Yearly Sales";
 
 				myChart.data.labels = Object.keys(result);
-				myChart.data.datasets.data = Object.values(result);
 				myChart.data.datasets[0].data = Object.values(result);
 				myChart.update();
 
@@ -237,36 +239,38 @@ $(document).ready(function() {
 		}
 	})
 	var ctx = document.getElementById("myChart");
-	var myChart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: labels,
-	        datasets: [{
-	            label: 'Sales for the Last 7 Days',
-	            data: totalSales,
-	            fillColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	            ],
-	            strokeColor: [
-	                'rgba(255,99,132,1)',
-	            ],
-	            borderWidth: 1
-	        }]
-	    },
-	    options: {
-	        scales: {
-	            yAxes: [{
-	                ticks: {
-	                    beginAtZero:true,
-	                    callback : function(value, index, values) {
-	                    	return '₱' + (value);
+	var myChart;
+	if (ctx && typeof Chart !== 'undefined') {
+		var chartLabels = [];
+		var chartData = [];
+		myChart = new Chart(ctx, {
+    		type: 'line',
+    		data: {
+    		    labels: chartLabels,
+    		    datasets: [{
+    		        label: 'Sales for the Last 7 Days',
+    		        data: chartData,
+    		        fillColor: [
+    		            'rgba(255, 99, 132, 0.2)',
+    		        ],
+    		        strokeColor: [
+    		            'rgba(255,99,132,1)',
+    		        ],
+    		        borderWidth: 1
+    		    }]
+    		},
+    		options: {
+    		    scales: {
+    		        yAxes: [{
+    		            ticks: {
+    		                beginAtZero:true,
+    		                callback : function(value, index, values) {
+    		                	return '₱' + (value);
 
-	                    }
-	                }
-	            }]
-	        }
-	    }
-	}); 
-})
-
-
+    		                }
+    		            }
+    		        }]
+    		    }
+    		}
+		});
+	}});

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" href="assets/nuicon.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/nuicon.png'); ?>" type="image/x-icon">
 </head>
 
 <head>
@@ -30,8 +30,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
 
-            <a class="navbar-brand" href="#">
-                <img src="assets/nulogo.png" class="navbar-logo">
+            <a class="navbar-brand" href="<?php echo base_url(); ?>">
+                <img src="<?php echo base_url('assets/nulogo.png'); ?>" class="navbar-logo" alt="NU Laguna Logo">
             </a>
 
 
@@ -70,7 +70,7 @@
 
     <div id="page-wrapper">
 
-        <?php $this->load->view($content) ?>
+        <?php if (isset($content) && ! empty($content)) { $this->load->view($content); } ?>
 
     </div>
     <!-- /#page-wrapper -->

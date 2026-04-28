@@ -1,9 +1,7 @@
 <style type="text/css">
-@import "bourbon";
-
 body {
     height: 50px;
-    background-image: url("<?php echo $base_url?>/assets/nulagunalogo.jpg") !important;
+    background-image: url("<?php echo base_url('assets/nulagunalogo.jpg') ?>") !important;
     background-color: rgba(0, 0, 0, 0.5);
     /* Dark overlay with 50% opacity */
     background-size: scale-down;
@@ -87,11 +85,7 @@ body {
 }
 </style>
 
-<head>
-    <link rel="icon" href="assets/nuicon.png" type="image/x-icon">
-</head>
-
-<body>
+    <link rel="icon" href="<?php echo base_url('assets/nuicon.png'); ?>" type="image/x-icon">
     <div class="wrapper">
         <?php
 	$attributes = array( 
@@ -100,7 +94,7 @@ body {
 	?>
         <?php echo form_open('AuthController/login_validation',$attributes )?>
         <div class="logo-container text-center">
-            <img src="assets/nulogo.png" alt="Your Logo" class="login-logo">
+            <img src="<?php echo base_url('assets/nulogo.png'); ?>" alt="Your Logo" class="login-logo">
         </div>
         <br>
         <?php if($this->session->flashdata('error')): ?>
@@ -110,12 +104,14 @@ body {
         <?php endif; ?>
         <div class="input-group form-group">
             <span class="input-group-addon"><i class="fa fa-user " aria-hidden="true"></i></span>
-            <input autocomplete="off" id="username" type="text" class="form-control input-md" name="username"
+            <label class="sr-only" for="username">Username</label>
+            <input autocomplete="username" id="username" type="text" class="form-control input-md" name="username"
                 placeholder="Username">
         </div>
         <div class="input-group form-group">
             <span class="input-group-addon"><i class="fa fa-key " aria-hidden="true"></i></span>
-            <input autocomplete="off" id="password" type="password" class="form-control input-md" name="password"
+            <label class="sr-only" for="password">Password</label>
+            <input autocomplete="current-password" id="password" type="password" class="form-control input-md" name="password"
                 placeholder="Password">
         </div>
 

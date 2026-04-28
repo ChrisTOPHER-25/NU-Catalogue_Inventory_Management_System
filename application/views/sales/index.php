@@ -5,6 +5,7 @@
 <!-- /.col-lg-12 -->
 </div>
 <div class="row">
+ <?php $customers = isset($customers) ? $customers : []; $dataset = isset($dataset) ? $dataset : []; ?>
  <div class="col-lg-12">
      <div class="panel panel-default">
         	 
@@ -20,11 +21,11 @@
 			 
 			    <div class="input-group input-daterange">
 
-			      <input type="text" id="min-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="From:">
+			      <input type="text" id="min-date" name="min_date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="From:">
 
 			      <div class="input-group-addon">to</div>
 
-			      <input type="text" id="max-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="To:">
+			      <input type="text" id="max-date" name="max_date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="To:">
 
 			    </div>
 				<div>

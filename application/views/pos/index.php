@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <link rel="icon" href="assets/nuicon.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/nuicon.png'); ?>" type="image/x-icon">
 </head>
 
-<a class="navbar-brand" href="#">
-    <img src="assets/nulogo.png" class="navbar-logo">
+<a class="navbar-brand" href="<?php echo base_url(); ?>">
+    <img src="<?php echo base_url('assets/nulogo.png'); ?>" class="navbar-logo" alt="NU Laguna Logo">
 </a>
 
 <head>
@@ -180,7 +180,8 @@
                             <h5 class="modal-title">Payment</h5>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <?php $customers = isset($customers) ? $customers : []; ?>
+    <div class="form-group">
                                 <label>Select Customer:</label>
                                 <select required="required" name="customer" class="form-control" id="customer-id">
                                     <option value="">Select Customer</option>
@@ -199,7 +200,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Total Amount:</label>
-                                <input required="required" id="total-amount-due" autocomplete="off" type="text" name=""
+                                <input required="required" id="total-amount-due" autocomplete="off" type="text" name="total_amount_due"
                                     disabled="" class="form-control">
                             </div>
                             <div class="form-group">
@@ -209,12 +210,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Change:</label>
-                                <input required="required" id="change" autocomplete="off" type="text" name=""
+                                <input required="required" id="change" autocomplete="off" type="text" name="change"
                                     disabled="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Remarks:</label>
-                                <input id="remarks" autocomplete="off" type="text" name="" class="form-control">
+                                <input id="remarks" autocomplete="off" type="text" name="remarks" class="form-control">
                             </div>
                         </div>
                         <div class="modal-footer">

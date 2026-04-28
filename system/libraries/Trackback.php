@@ -111,7 +111,7 @@ class CI_Trackback {
 	/**
 	 * Send Trackback
 	 *
-	 * @param	array
+	 * @param	array $tb_data
 	 * @return	bool
 	 */
 	public function send($tb_data)
@@ -234,7 +234,7 @@ class CI_Trackback {
 	 * sends the "incomplete information" error, as that's
 	 * the most common one.
 	 *
-	 * @param	string
+	 * @param	string $message
 	 * @return	void
 	 */
 	public function send_error($message = 'Incomplete Information')
@@ -262,7 +262,7 @@ class CI_Trackback {
 	/**
 	 * Fetch a particular item
 	 *
-	 * @param	string
+	 * @param	string $item
 	 * @return	string
 	 */
 	public function data($item)
@@ -278,8 +278,8 @@ class CI_Trackback {
 	 * Opens a socket connection and passes the data to
 	 * the server. Returns TRUE on success, FALSE on failure
 	 *
-	 * @param	string
-	 * @param	string
+	 * @param	string $url
+	 * @param	string $data
 	 * @return	bool
 	 */
 	public function process($url, $data)
@@ -341,8 +341,8 @@ class CI_Trackback {
 	 * It takes a string of URLs (separated by comma or
 	 * space) and puts each URL into an array
 	 *
-	 * @param	string
-	 * @return	string
+	 * @param	string $urls
+	 * @return	array
 	 */
 	public function extract_urls($urls)
 	{
@@ -363,7 +363,7 @@ class CI_Trackback {
 	 *
 	 * Simply adds "http://" if missing
 	 *
-	 * @param	string
+	 * @param	string &$url
 	 * @return	void
 	 */
 	public function validate_url(&$url)
@@ -381,8 +381,8 @@ class CI_Trackback {
 	/**
 	 * Find the Trackback URL's ID
 	 *
-	 * @param	string
-	 * @return	string
+	 * @param	string $url
+	 * @return	string|false
 	 */
 	public function get_id($url)
 	{
@@ -422,7 +422,7 @@ class CI_Trackback {
 	/**
 	 * Convert Reserved XML characters to Entities
 	 *
-	 * @param	string
+	 * @param	string $str
 	 * @return	string
 	 */
 	public function convert_xml($str)
@@ -445,9 +445,9 @@ class CI_Trackback {
 	 *
 	 * Limits the string based on the character count. Will preserve complete words.
 	 *
-	 * @param	string
-	 * @param	int
-	 * @param	string
+	 * @param	string $str
+	 * @param	int $n
+	 * @param	string $end_char
 	 * @return	string
 	 */
 	public function limit_characters($str, $n = 500, $end_char = '&#8230;')
@@ -473,6 +473,8 @@ class CI_Trackback {
 				return rtrim($out).$end_char;
 			}
 		}
+
+		return rtrim($out).$end_char;
 	}
 
 	// --------------------------------------------------------------------
@@ -483,7 +485,7 @@ class CI_Trackback {
 	 * Converts Hight ascii text and MS Word special chars
 	 * to character entities
 	 *
-	 * @param	string
+	 * @param	string $str
 	 * @return	string
 	 */
 	public function convert_ascii($str)
@@ -530,7 +532,7 @@ class CI_Trackback {
 	/**
 	 * Set error message
 	 *
-	 * @param	string
+	 * @param	string $msg
 	 * @return	void
 	 */
 	public function set_error($msg)
@@ -544,8 +546,8 @@ class CI_Trackback {
 	/**
 	 * Show error messages
 	 *
-	 * @param	string
-	 * @param	string
+	 * @param	string $open
+	 * @param	string $close
 	 * @return	string
 	 */
 	public function display_errors($open = '<p>', $close = '</p>')
